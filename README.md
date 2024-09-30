@@ -2,7 +2,7 @@
 
 ## **Project Overview**
 
-This project is a Python-based automation framework to test REST APIs. It uses _requests_, _pytest_ and _python-dotenv_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration.
+This project is a Python-based automation framework to test REST APIs. It uses _requests_, _pytest_, _python-dotenv_ and _logger_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration.
 
 ### **Prerequisites**
 
@@ -60,3 +60,5 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 - _tests/test_sample.py_: Contains test cases.
 - _requirements.txt_: Contains list of required Python libraries.
 - _Dockerfile'_: Contains the Docker image build process.
+- _logs/test_logs.log_: Captures session logs.
+- _pytest.ini_: Defines logfile and level.
