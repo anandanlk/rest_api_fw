@@ -1,5 +1,5 @@
 import os
 
-BASE_URL = "https://google.com"
-API_KEY = os.getenv("API_KEY", "")
-TIMEOUT = 30
+BASE_URL = "https://restful-booker.herokuapp.com"
+# API_TOKEN = os.getenv("API_TOKEN", "")
+# TIMEOUT = 30
