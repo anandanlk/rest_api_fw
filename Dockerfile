@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY config.py ./
 COPY lib/ ./lib
 COPY tests/ ./tests
+COPY data/ ./data
 
 ENV PYTHONPATH=/api-tests
 

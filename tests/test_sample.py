@@ -1,6 +1,16 @@
 import pytest
-from lib.crud import APIClient
+import json
+import os
+from lib.api_client import APIClient
 from config import BASE_URL, USERNAME, PASSWORD, TIMEOUT
+
+# Load test data
+@pytest.fixture(scope='module')
+def test_data():
+    current_dir = os.path.dirname(__file__)
+    test_data_path = os.path.join(current_dir, '..', 'data', 'user_data.json')
+    with open(test_data_path) as f:
+        return json.load(f)
 
 # Instance of APIClient
 @pytest.fixture(scope='module')
@@ -10,18 +20,8 @@ def api_client():
 
 # Create booking and return booking ID
 @pytest.fixture(scope='module')
-def booking_id(api_client):
-    payload = {
-        "firstname": "Anand",
-        "lastname": "Krishna",
-        "totalprice": 150,
-        "depositpaid": True,
-        "bookingdates": {
-            "checkin": "2024-10-28",
-            "checkout": "2024-10-30"
-        },
-        "additionalneeds": "Breakfast"
-    }
+def booking_id(api_client, test_data):
+    payload = test_data["booking"]
     response = api_client.post("booking", payload)
     assert response.status_code == 200
     return response.json()["bookingid"]
@@ -37,39 +37,27 @@ def test_create_booking(booking_id):
     assert booking_id is not None
 
 # Testing Retrieve Booking
-def test_get_booking(api_client, booking_id):
+def test_get_booking(api_client, booking_id, test_data):
     response = api_client.get(f"booking/{booking_id}")
     assert response.status_code == 200
-    assert response.json()["firstname"] == "Anand"
-    assert response.json()["lastname"] == "Krishna"
+    assert response.json()["firstname"] == test_data["booking"]["firstname"]
+    assert response.json()["lastname"] == test_data["booking"]["lastname"]
 
 # Test update booking
-def test_update_booking(api_client, booking_id):
-    payload = {
-        "firstname": "Anandan",
-        "lastname": "Krishnasamy",
-        "totalprice": 300,
-        "depositpaid": True,
-        "bookingdates": {
-            "checkin": "2024-10-28",
-            "checkout": "2024-10-30"
-        },
-        "additionalneeds": "Breakfast"
-    }
+def test_update_booking(api_client, booking_id, test_data):
+    payload = test_data["updated_booking"]
     response = api_client.put(f"booking/{booking_id}", payload)
     assert response.status_code == 200
-    assert response.json()["firstname"] == "Anandan"
-    assert response.json()["lastname"] == "Krishnasamy"
-    assert response.json()["totalprice"] == 300
+    assert response.json()["firstname"] == test_data["updated_booking"]["firstname"]
+    assert response.json()["lastname"] == test_data["updated_booking"]["lastname"]
+    assert response.json()["lastname"] == test_data["updated_booking"]["lastname"]
 
 # Test partial update
-def test_partial_update_booking(api_client, booking_id):
-    payload = {
-        "additionalneeds": "Lunch"
-    }
+def test_partial_update_booking(api_client, booking_id, test_data):
+    payload = test_data["partial_update"]
     response = api_client.patch(f"booking/{booking_id}", payload)
     assert response.status_code == 200
-    assert response.json()["additionalneeds"] == "Lunch"
+    assert response.json()["additionalneeds"] == test_data["partial_update"]["additionalneeds"]
 
 # Test delete booking
 def test_delete_booking(api_client, booking_id):

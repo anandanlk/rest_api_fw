@@ -36,13 +36,17 @@ This project is a Python-based automation framework to test REST APIs. It uses _
    TIMEOUT=30
 ```
 
-2. **Run Tests Locally:**
+2. **Update data:**
+
+- Update `data\user_data.json' as needed
+
+3. **Run Tests Locally:**
 
    ```
    pytest tests/ -v
    ```
 
-3. **Run Tests in Docker Container:**
+4. **Run Tests in Docker Container:**
 
 ```
    docker build -t api-tests .
@@ -52,7 +56,7 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 ### **Project Structure**
 
 - _config.py_: Imports configuration details from OS Environment.
-- _lib/crud.py_: Contains libraries for CRUD operations.
+- _lib/api_client.py_: Contains libraries for CRUD operations.
 - _tests/test_sample.py_: Contains test cases.
 - _requirements.txt_: Contains list of required Python libraries.
 - _Dockerfile'_: Contains the Docker image build process.
