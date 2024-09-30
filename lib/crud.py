@@ -11,19 +11,28 @@ class APIClient:
         if response.status_code == 200:
             self.token = response.json()['token']
         return response
+    
+    def get_headers(self):
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        if self.token:
+            headers["Cookie"] = f"token={self.token}"
+        return headers
 
     def get(self, endpoint):
-        response = requests.get(f"{self.base_url}/{endpoint}", timeout=self.timeout)
+        response = requests.get(f"{self.base_url}/{endpoint}", headers=self.get_headers(), timeout=self.timeout)
         return response
 
     def post(self, endpoint, data):
-        response = requests.post(f"{self.base_url}/{endpoint}", json=data, timeout=self.timeout)
+        response = requests.post(f"{self.base_url}/{endpoint}", json=data, headers=self.get_headers(), timeout=self.timeout)
         return response
 
     def put(self, endpoint, data):
-        response = requests.put(f"{self.base_url}/{endpoint}", json=data, timeout=self.timeout)
+        response = requests.put(f"{self.base_url}/{endpoint}", json=data, headers=self.get_headers(), timeout=self.timeout)
         return response
 
     def delete(self, endpoint):
-        response = requests.delete(f"{self.base_url}/{endpoint}", timeout=self.timeout)
+        response = requests.delete(f"{self.base_url}/{endpoint}", headers=self.get_headers(), timeout=self.timeout)
         return response
