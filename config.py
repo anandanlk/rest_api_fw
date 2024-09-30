@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 
-BASE_URL_TEST_ENV = "https://restful-booker.herokuapp.com"
+load_dotenv()
+
+BASE_URL = os.getenv("BASE_URL", "https://restful-booker.herokuapp.com")
 USERNAME = os.getenv("BOOKER_USER", "")
 PASSWORD = os.getenv("BOOKER_PASS", "")
-TIMEOUT = 30
+TIMEOUT = int(os.getenv("TIMEOUT", 30))

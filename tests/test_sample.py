@@ -1,11 +1,11 @@
 import pytest
 from lib.crud import APIClient
-from config import BASE_URL_TEST_ENV, USERNAME, PASSWORD, TIMEOUT
+from config import BASE_URL, USERNAME, PASSWORD, TIMEOUT
 
 # Instance of APIClient
 @pytest.fixture(scope='module')
 def api_client():
-    client = APIClient(BASE_URL_TEST_ENV, TIMEOUT)
+    client = APIClient(BASE_URL, TIMEOUT)
     yield client
 
 # Create booking and return booking ID
@@ -61,6 +61,15 @@ def test_update_booking(api_client, booking_id):
     assert response.json()["firstname"] == "Anandan"
     assert response.json()["lastname"] == "Krishnasamy"
     assert response.json()["totalprice"] == 300
+
+# Test partial update
+def test_partial_update_booking(api_client, booking_id):
+    payload = {
+        "additionalneeds": "Lunch"
+    }
+    response = api_client.patch(f"booking/{booking_id}", payload)
+    assert response.status_code == 200
+    assert response.json()["additionalneeds"] == "Lunch"
 
 # Test delete booking
 def test_delete_booking(api_client, booking_id):

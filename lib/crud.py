@@ -12,13 +12,11 @@ class APIClient:
             self.token = response.json()['token']
         return response
     
-    def get_headers(self):
-        headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        }
-        if self.token:
-            headers["Cookie"] = f"token={self.token}"
+    def get_headers(self, token_required=False):
+        if token_required: # Token required for put, patch and delete
+            headers = { "Content-Type": "application/json", "Accept": "application/json", "Cookie":f"token={self.token}"}
+        else:
+            headers = { "Content-Type": "application/json", "Accept": "application/json"}
         return headers
 
     def get(self, endpoint):
@@ -30,9 +28,13 @@ class APIClient:
         return response
 
     def put(self, endpoint, data):
-        response = requests.put(f"{self.base_url}/{endpoint}", json=data, headers=self.get_headers(), timeout=self.timeout)
+        response = requests.put(f"{self.base_url}/{endpoint}", json=data, headers=self.get_headers(token_required=True), timeout=self.timeout)
+        return response
+    
+    def patch(self, endpoint, data):
+        response = requests.patch(f"{self.base_url}/{endpoint}", json=data, headers=self.get_headers(token_required=True), timeout=self.timeout)
         return response
 
     def delete(self, endpoint):
-        response = requests.delete(f"{self.base_url}/{endpoint}", headers=self.get_headers(), timeout=self.timeout)
+        response = requests.delete(f"{self.base_url}/{endpoint}", headers=self.get_headers(token_required=True), timeout=self.timeout)
         return response
