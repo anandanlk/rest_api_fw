@@ -29,10 +29,12 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 
    Create dotenv '.env' file with following variables (or) update os environment
 
-   - BASE_URL=https://restful-booker.herokuapp.com
-   - BOOKER_USER=your_username
-   - BOOKER_PASS=your_password
-   - TIMEOUT=30
+```
+   BASE_URL=https://restful-booker.herokuapp.com
+   BOOKER_USER=your_username
+   BOOKER_PASS=your_password
+   TIMEOUT=30
+```
 
 2. **Run Tests Locally:**
 
@@ -43,8 +45,8 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 3. **Run Tests in Docker Container:**
 
 ```
-   - docker build -t api-tests .
-   - docker run --env-file .env api-tests
+   docker build -t api-tests .
+   docker run --env-file .env api-tests
 ```
 
 ### **Project Structure**
