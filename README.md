@@ -50,14 +50,14 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 
    ```
    pip install pytest-html
-   pytest --html=report.html
+   pytest tests/ -v --html=report.html
    ```
 
 5. **Run Tests and create Allure reports:**
 
    ```
    pip install allure-pytest
-   pytest --alluredir=allure_results
+   pytest tests/ -v --alluredir=allure_results
    allure serve allure_results
    ```
 
