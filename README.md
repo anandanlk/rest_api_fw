@@ -12,10 +12,16 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 ### **Installation**
 
 1. Clone the repository:
+
+```
    git clone https://github.com/anandanlk/rest_api_fw.git
+```
 
 2. Install dependencies:
+
+```
    pip install -r requirements.txt
+```
 
 ### **Usage**
 
@@ -35,8 +41,11 @@ This project is a Python-based automation framework to test REST APIs. It uses _
    ```
 
 3. **Run Tests in Docker Container:**
+
+```
    - docker build -t api-tests .
    - docker run --env-file .env api-tests
+```
 
 ### **Project Structure**
 
