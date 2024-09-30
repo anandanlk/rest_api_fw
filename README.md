@@ -29,11 +29,12 @@ This project is a Python-based automation framework to test REST APIs. It uses _
    - TIMEOUT=30
 
 2. **Run Tests Locally:**
-   pytest tests/ -v
+
+   - pytest tests/ -v
 
 3. **Run Tests in Docker Container:**
-   docker build -t api-tests .
-   docker run --env-file .env api-tests
+   - docker build -t api-tests .
+   - docker run --env-file .env api-tests
 
 ### **Project Structure**
 
