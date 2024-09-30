@@ -2,7 +2,7 @@
 
 ## **Project Overview**
 
-This project is a Python-based automation framework to test REST APIs. It uses _requests_, _pytest_, _python-dotenv_ and _logger_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration.
+This project is a Python-based automation framework to test REST APIs. It uses _requests_, _pytest_, _python-dotenv_, _pydantic_ and _logger_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration.
 
 ### **Prerequisites**
 
@@ -46,17 +46,39 @@ This project is a Python-based automation framework to test REST APIs. It uses _
    pytest tests/ -v
    ```
 
-4. **Run Tests in Docker Container:**
+4. **Run Tests and Create html reports:**
+
+   ```
+   pip install pytest-html
+   pytest --html=report.html
+   ```
+
+5. **Run Tests and create Allure reports:**
+
+   ```
+   pip install allure-pytest
+   pytest --alluredir=allure_results
+   allure serve allure_results
+   ```
+
+6. **Run Tests in Docker Container:**
 
 ```
    docker build -t api-tests .
    docker run --env-file .env api-tests
 ```
 
+6. **Run Tests in Docker Container and copy logs to local folder:**
+
+```
+   docker run --env-file .env --rm -v $(pwd)/logs:/api-tests/logs api-tests
+```
+
 ### **Project Structure**
 
 - _config.py_: Imports configuration details from OS Environment.
 - _lib/api_client.py_: Contains libraries for CRUD operations.
+- _models/model.py_: Data Object model.
 - _tests/test_sample.py_: Contains test cases.
 - _requirements.txt_: Contains list of required Python libraries.
 - _Dockerfile'_: Contains the Docker image build process.

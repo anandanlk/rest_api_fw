@@ -10,6 +10,7 @@ COPY config.py ./
 COPY lib/ ./lib
 COPY tests/ ./tests
 COPY data/ ./data
+COPY models/ ./models
 COPY pytest.ini ./
 
 ENV PYTHONPATH=/api-tests

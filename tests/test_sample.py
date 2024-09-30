@@ -4,6 +4,8 @@ import os
 import logging
 from lib.api_client import APIClient
 from config import BASE_URL, USERNAME, PASSWORD, TIMEOUT
+from models.model import Booking, PartialUpdate
+from pydantic import ValidationError
 
 # Load test data
 @pytest.fixture(scope='module')
@@ -36,12 +38,27 @@ def api_client():
     yield client
 
 # Create booking and return booking ID
+# @pytest.fixture(scope='module')
+# def booking_id(api_client, test_data):
+#     payload = test_data["booking"]
+#     response = api_client.post("booking", payload)
+#     assert response.status_code == 200
+#     return response.json()["bookingid"]
+
+# Create booking and return booking ID
 @pytest.fixture(scope='module')
 def booking_id(api_client, test_data):
     payload = test_data["booking"]
-    response = api_client.post("booking", payload)
+    # Validating payload using the Booking model
+    try:
+        booking = Booking(**payload)
+    except ValidationError as e:
+        logging.error(f'Data validation failed foir the payload: {payload}')
+        pytest.fail(f"Booking validation failed: {e}")
+    response = api_client.post("booking", booking.model_dump())
     assert response.status_code == 200
     return response.json()["bookingid"]
+
 
 # Test authentication
 def test_authenticate(api_client):
@@ -63,7 +80,13 @@ def test_get_booking(api_client, booking_id, test_data):
 # Test update booking
 def test_update_booking(api_client, booking_id, test_data):
     payload = test_data["updated_booking"]
-    response = api_client.put(f"booking/{booking_id}", payload)
+    # Validating payload using the Booking model
+    try:
+        booking = Booking(**payload)
+    except ValidationError as e:
+        logging.error(f'Data validation failed foir the payload: {payload}')
+        pytest.fail(f"Booking validation failed: {e}")
+    response = api_client.put(f"booking/{booking_id}", booking.model_dump())
     assert response.status_code == 200
     assert response.json()["firstname"] == test_data["updated_booking"]["firstname"]
     assert response.json()["lastname"] == test_data["updated_booking"]["lastname"]
@@ -72,7 +95,12 @@ def test_update_booking(api_client, booking_id, test_data):
 # Test partial update
 def test_partial_update_booking(api_client, booking_id, test_data):
     payload = test_data["partial_update"]
-    response = api_client.patch(f"booking/{booking_id}", payload)
+    try:
+        booking = PartialUpdate(**payload)
+    except ValidationError as e:
+        logging.error(f'Data validation failed foir the payload: {payload}')
+        pytest.fail(f"Booking validation failed: {e}")
+    response = api_client.patch(f"booking/{booking_id}", booking.model_dump())
     assert response.status_code == 200
     assert response.json()["additionalneeds"] == test_data["partial_update"]["additionalneeds"]
 
