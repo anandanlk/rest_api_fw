@@ -30,7 +30,9 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 
 2. **Run Tests Locally:**
 
-   - pytest tests/ -v
+   ```
+   pytest tests/ -v
+   ```
 
 3. **Run Tests in Docker Container:**
    - docker build -t api-tests .
@@ -39,7 +41,7 @@ This project is a Python-based automation framework to test REST APIs. It uses _
 ### **Project Structure**
 
 - _config.py_: Imports configuration details from OS Environment.
-- _lib\crud.py_: Contains libraries for CRUD operations.
-- _tests\test_sample.py_: Contains test cases.
+- _lib/crud.py_: Contains libraries for CRUD operations.
+- _tests/test_sample.py_: Contains test cases.
 - _requirements.txt_: Contains list of required Python libraries.
 - _Dockerfile'_: Contains the Docker image build process.
