@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY clients/ ./clients
 COPY data/ ./data
+COPY modules/ ./modules
 COPY schema/ ./schema
 COPY tests/ ./tests
 COPY utils/ ./utils

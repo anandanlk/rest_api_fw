@@ -76,14 +76,13 @@ This is a Python-based automation framework to test [restful-booker](https://res
 
 ### **Project Structure**
 
-- _clients/api_client.py_: Contains libraries for CRUD operations.
-- _data/user_data.json_: Contains user data to test.
-- _data/invalid_user_data.json_: Contains invalid user data to test.
-- _data/booking_data.json_: Contains booking data to test.
-- _logs/_: To store session logs.
-- _schema/schema.py_: Scehma validation.
-- _tests/test_sample.py_: Contains test cases.
-- _utils/data_loader.py_: Contains data loader library.
+- _clients_: Contains libraries for CRUD operations.
+- _data_: Contains user and booking data to test.
+- _logs_: To store session logs.
+- _modules_: Contains module libraries
+- _schema_: Scehma validation.
+- _tests_: Contains test cases.
+- _utils_: Contains common utilities.
 - _.env_: Environment variables.
 - _config.py_: Imports configuration details from OS Environment or .env file.
 - _Dockerfile'_: Contains the Docker image build process.
