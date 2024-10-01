@@ -60,10 +60,10 @@ This is a Python-based automation framework to test [restful-booker](https://res
    docker run --env-file .env api-tests
 ```
 
-6. **Run Tests in Docker Container and copy logs to local folder:**
+6. **Run Tests in Docker Container and get logs, results in local folder:**
 
 ```
-   docker run --env-file .env --rm -v $(pwd)/logs:/api-tests/logs api-tests
+   docker-compose up
 ```
 
 ### **Project Structure**
@@ -78,5 +78,6 @@ This is a Python-based automation framework to test [restful-booker](https://res
 - _.env_: Environment variables.
 - _config.py_: Imports configuration details from OS Environment or .env file.
 - _Dockerfile'_: Contains the Docker image build process.
+- _docker-compose.yml_: Configuration file for docker-compose.
 - _requirements.txt_: Contains list of required Python libraries.
 - _pytest.ini_: Defines logfile and level.

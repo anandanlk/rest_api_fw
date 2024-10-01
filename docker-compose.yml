@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api-tests:
+    image: python:3.9-slim
+    volumes:
+      - .:/api-tests
+    working_dir: /api-tests
+    environment:
+      - PYTHONPATH=/api-tests
+    command: >
+      bash -c "pip install --no-cache-dir -r requirements.txt &&
+      pytest tests/ -v"
