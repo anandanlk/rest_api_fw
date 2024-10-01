@@ -1,6 +1,6 @@
 import pytest
 import logging
-from models.model import User
+from schema.user import User
 from pydantic import ValidationError
 from booking.fixtures.api_fixtures import api_client
 from utils.data_loader import user_data

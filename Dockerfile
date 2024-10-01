@@ -6,11 +6,12 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY config.py ./
-COPY lib/ ./lib
-COPY tests/ ./tests
+COPY clients/ ./clients
 COPY data/ ./data
-COPY models/ ./models
+COPY schema/ ./schema
+COPY tests/ ./tests
+COPY utils/ ./utils
+COPY config.py ./
 COPY pytest.ini ./
 
 ENV PYTHONPATH=/api-tests
