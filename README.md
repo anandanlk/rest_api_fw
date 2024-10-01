@@ -2,7 +2,7 @@
 
 ## **Project Overview**
 
-This is a Python-based automation framework to test [restful-booker](https://restful-booker.herokuapp.com/apidoc/index.html) REST API. It uses _requests_, _pytest_, _python-dotenv_, _pydantic_ and _logger_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration.
+This is a Python-based automation framework to test [restful-booker](https://restful-booker.herokuapp.com/apidoc/index.html) REST API. It uses _requests_, _pytest_, _python-dotenv_, _pydantic_ and _logger_ libraries and integrated with Docker for easy deployment and execution. It utilizes environment variables for configuration. The framework also generates allure reports.
 
 ### **Prerequisites**
 
@@ -54,11 +54,10 @@ This is a Python-based automation framework to test [restful-booker](https://res
    pytest tests/ -v --html=report.html
    ```
 
-5. **Run Tests and create Allure reports:**
+5. **To view Allure reports:**
 
    ```
    pip install allure-pytest
-   pytest tests/ -v --alluredir=allure_results
    allure serve allure_results
    ```
 
