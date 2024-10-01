@@ -4,3 +4,4 @@
 /allure_results
 *.log
 *.html
+/allure-results
