@@ -47,21 +47,13 @@ This is a Python-based automation framework to test [restful-booker](https://res
    pytest tests/ -v
    ```
 
-4. **Run Tests and Create html reports:**
+4. **To view Allure reports:**
 
    ```
-   pip install pytest-html
-   pytest tests/ -v --html=report.html
-   ```
-
-5. **To view Allure reports:**
-
-   ```
-   pip install allure-pytest
    allure serve allure_results
    ```
 
-6. **Run Tests in Docker Container:**
+5. **Run Tests in Docker Container:**
 
 ```
    docker build -t api-tests .
