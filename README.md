@@ -79,6 +79,7 @@ This is a Python-based automation framework to test [restful-booker](https://res
 
 - _clients/api_client.py_: Contains libraries for CRUD operations.
 - _data/user_data.json_: Contains user data to test.
+- _data/invalid_user_data.json_: Contains invalid user data to test.
 - _data/booking_data.json_: Contains booking data to test.
 - _logs/_: To store session logs.
 - _schema/schema.py_: Scehma validation.

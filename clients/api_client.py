@@ -12,7 +12,7 @@ class APIClient:
         self.log.info(f"Authenticating user {username}")
         response = requests.post(f"{self.base_url}/auth", json=auth_data, timeout=self.timeout)
         self.log.info(f"Response: {response.status_code} - {response.text}")
-        if response.status_code == 200:
+        if response.status_code == 200 and 'token' in response.json():
             self.token = response.json()['token']
         return response
     

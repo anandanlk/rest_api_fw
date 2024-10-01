@@ -23,5 +23,8 @@ def get_relative_path(filename):
 def user_data():
     return load_json_data(get_relative_path('user_data.json'))
 
+def invalid_user_data():
+    return load_json_data(get_relative_path('invalid_user_data.json'))
+
 def booking_data():
     return load_json_data(get_relative_path('booking_data.json'))
