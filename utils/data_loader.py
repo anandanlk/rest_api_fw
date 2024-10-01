@@ -25,9 +25,3 @@ def user_data():
 
 def booking_data():
     return load_json_data(get_relative_path('booking_data.json'))
-
-def update_booking_data():
-    return load_json_data(get_relative_path('update_booking_data.json'))
-
-def partial_update_data():
-    return load_json_data(get_relative_path('partial_update_data.json'))

@@ -10,19 +10,74 @@
                 "checkout": "2024-10-30"
             },
             "additionalneeds": "Breakfast"
+        },
+        "updated_booking": {
+            "firstname": "Anandan",
+            "lastname": "Krishnasamy",
+            "totalprice": 300,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "partial_update": {
+            "additionalneeds": "Lunch"
         }
     },
     {
         "booking": {
             "firstname": "Ram",
-            "lastname": "Ravi",
+            "lastname": "Krishna",
+            "totalprice": 150,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "updated_booking": {
+            "firstname": "Rama",
+            "lastname": "Krishnasamy",
             "totalprice": 200,
             "depositpaid": true,
             "bookingdates": {
-                "checkin": "2024-11-28",
-                "checkout": "2024-11-30"
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
             },
-            "additionalneeds": "Lunch"
+            "additionalneeds": "Breakfast"
+        },
+        "partial_update": {
+            "checkout": "2024-10-29"
+        }
+    },
+    {
+        "booking": {
+            "firstname": "Lal",
+            "lastname": "Krishna",
+            "totalprice": 100,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "updated_booking": {
+            "firstname": "Lala",
+            "lastname": "Krishnasamy",
+            "totalprice": 300,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
+            },
+            "additionalneeds": "Breakfast"
+        },
+        "partial_update": {
+            "totalprice": 200
         }
     }
 ]

@@ -4,16 +4,9 @@ import os
 import logging
 from lib.api_client import APIClient
 from config import BASE_URL, TIMEOUT
-from models.model import Booking
+from models.model import User, Booking
 from pydantic import ValidationError
-
-# # Load test data
-# @pytest.fixture(scope='module')
-# def test_data():
-#     current_dir = os.path.dirname(__file__)
-#     test_data_path = os.path.join(current_dir, '..', '..', '..', 'data', 'user_data.json')
-#     with open(test_data_path) as f:
-#         return json.load(f)
+from utils.data_loader import booking_data
 
 # Instance of APIClient
 @pytest.fixture(scope='module')
@@ -22,7 +15,8 @@ def api_client():
     yield client
 
 # # Create booking and return booking ID
-# @pytest.fixture(scope='module')
+# @pytest.fixture(scope='function')
+# @pytest.mark.parametrize("test_data", booking_data())
 # def booking_id(api_client, test_data, request):
 #     payload = test_data["booking"]
 #     # Validating payload using the Booking model
