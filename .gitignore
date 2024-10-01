@@ -2,3 +2,5 @@
 /env
 *.pyc
 /allure_results
+*.log
+*.html
