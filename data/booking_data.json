@@ -1,0 +1,28 @@
+[
+    {
+        "booking": {
+            "firstname": "Anand",
+            "lastname": "Krishna",
+            "totalprice": 150,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-10-28",
+                "checkout": "2024-10-30"
+            },
+            "additionalneeds": "Breakfast"
+        }
+    },
+    {
+        "booking": {
+            "firstname": "Ram",
+            "lastname": "Ravi",
+            "totalprice": 200,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2024-11-28",
+                "checkout": "2024-11-30"
+            },
+            "additionalneeds": "Lunch"
+        }
+    }
+]

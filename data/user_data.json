@@ -1,27 +1,10 @@
-{
-    "booking": {
-        "firstname": "Anand",
-        "lastname": "Krishna",
-        "totalprice": 150,
-        "depositpaid": true,
-        "bookingdates": {
-            "checkin": "2024-10-28",
-            "checkout": "2024-10-30"
-        },
-        "additionalneeds": "Breakfast"
+[
+    {
+        "username": "admin",
+        "password": "password123"
     },
-    "updated_booking": {
-        "firstname": "Anandan",
-        "lastname": "Krishnasamy",
-        "totalprice": 300,
-        "depositpaid": true,
-        "bookingdates": {
-            "checkin": "2024-10-28",
-            "checkout": "2024-10-30"
-        },
-        "additionalneeds": "Breakfast"
-    },
-    "partial_update": {
-        "additionalneeds": "Lunch"
+    {
+        "username": "admin",
+        "password": "password123"
     }
-}
+]
