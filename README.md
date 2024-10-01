@@ -27,7 +27,7 @@ This is a Python-based automation framework to test [restful-booker](https://res
 
 1. **Configure API Details:**
 
-   Create dotenv '.env' file with following variables (or) update os environment
+   Create dotenv '.env' file with following variables (or) update os environment variable
 
 ```
    BASE_URL=https://restful-booker.herokuapp.com
@@ -38,7 +38,8 @@ This is a Python-based automation framework to test [restful-booker](https://res
 
 2. **Update data:**
 
-- Update `data\user_data.json' as needed
+- Update `data\user_data.json' if needed
+- Update `data\booking_data.json' if needed
 
 3. **Run Tests Locally:**
 
@@ -76,11 +77,15 @@ This is a Python-based automation framework to test [restful-booker](https://res
 
 ### **Project Structure**
 
-- _config.py_: Imports configuration details from OS Environment.
-- _lib/api_client.py_: Contains libraries for CRUD operations.
-- _models/model.py_: Data Object model.
+- _clients/api_client.py_: Contains libraries for CRUD operations.
+- _data/user_data.json_: Contains user data to test.
+- _data/booking_data.json_: Contains booking data to test.
+- _logs/_: To store session logs.
+- _schema/schema.py_: Scehma validation.
 - _tests/test_sample.py_: Contains test cases.
-- _requirements.txt_: Contains list of required Python libraries.
+- _utils/data_loader.py_: Contains data loader library.
+- _.env_: Environment variables.
+- _config.py_: Imports configuration details from OS Environment or .env file.
 - _Dockerfile'_: Contains the Docker image build process.
-- _logs/test_logs.log_: Captures session logs.
+- _requirements.txt_: Contains list of required Python libraries.
 - _pytest.ini_: Defines logfile and level.
