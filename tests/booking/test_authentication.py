@@ -20,6 +20,7 @@ def test_authenticate(api_client, user):
     # authenticate
     response = api_client.authenticate(validated_user.username, validated_user.password)
     assert response.status_code == 200
+    assert response.headers["Content-Type"] == "application/json; charset=utf-8"
     assert "token" in response.json()
 
 # Test authentication with invalid data
@@ -36,4 +37,5 @@ def test_authenticate_invalid(api_client, invalid_user):
 
     # Authenticate
     response = api_client.authenticate(invalid_user.get("username", ""), invalid_user.get("password", ""))
+    assert response.headers["Content-Type"] == "application/json; charset=utf-8"
     assert "token" not in response.json()
